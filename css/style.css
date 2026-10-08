@@ -1,0 +1,247 @@
+/* ===== Variáveis de cor ===== */
+:root {
+  --cor-fundo: #f4f4f7;
+  --cor-card: #ffffff;
+  --cor-principal: #5b3cc4;
+  --cor-principal-escura: #432a99;
+  --cor-texto: #222222;
+  --cor-texto-claro: #666666;
+  --cor-borda: #dddddd;
+  --cor-sucesso: #1f8a4c;
+  --cor-perigo: #c0392b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.5;
+}
+
+/* ===== Cabeçalho ===== */
+.cabecalho {
+  background-color: var(--cor-principal);
+  color: white;
+  text-align: center;
+  padding: 32px 16px;
+}
+
+.cabecalho h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+/* ===== Layout ===== */
+.container {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.card {
+  background-color: var(--cor-card);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: var(--cor-principal-escura);
+}
+
+/* ===== Formulário ===== */
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+.campo label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  padding: 10px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--cor-principal);
+  border-color: var(--cor-principal);
+}
+
+.linha {
+  display: flex;
+  gap: 16px;
+}
+
+.botao {
+  background-color: var(--cor-principal);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.botao:hover {
+  background-color: var(--cor-principal-escura);
+}
+
+.erro {
+  color: var(--cor-perigo);
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+/* ===== Filtros ===== */
+.filtros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.filtros input {
+  flex: 2;
+}
+
+.filtros select {
+  flex: 1;
+}
+
+.contador {
+  color: var(--cor-texto-claro);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+/* ===== Lista de filmes ===== */
+.lista {
+  list-style: none;
+}
+
+.filme {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.filme h3 {
+  font-size: 1.1rem;
+}
+
+.filme .info {
+  color: var(--cor-texto-claro);
+  font-size: 0.9rem;
+}
+
+.etiqueta {
+  display: inline-block;
+  background-color: #ece7fb;
+  color: var(--cor-principal-escura);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+/* filme marcado como assistido */
+.filme.assistido {
+  background-color: #eef8f2;
+  border-color: #b9e2c9;
+}
+
+.filme.assistido h3 {
+  color: var(--cor-sucesso);
+}
+
+.acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.acoes button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-assistido {
+  background-color: var(--cor-sucesso);
+  color: white;
+}
+
+.btn-favorito {
+  background-color: #f1c40f;
+  color: #333;
+}
+
+.btn-remover {
+  background-color: var(--cor-perigo);
+  color: white;
+}
+
+.lista-vazia {
+  text-align: center;
+  color: var(--cor-texto-claro);
+  padding: 20px;
+}
+
+/* ===== Rodapé ===== */
+.rodape {
+  text-align: center;
+  padding: 20px;
+  color: var(--cor-texto-claro);
+  font-size: 0.85rem;
+}
+
+/* ===== Responsivo (celular) ===== */
+@media (max-width: 600px) {
+  .linha,
+  .filtros {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .filtros input,
+  .filtros select {
+    margin-bottom: 10px;
+  }
+
+  .filme {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .acoes {
+    width: 100%;
+  }
+
+  .acoes button {
+    flex: 1;
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineLista - Biblioteca de Filmes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <h1>🎬 CineLista</h1>
+    <p>Organize os filmes que você já assistiu e os que ainda quer assistir.</p>
+  </header>
+
+  <main class="container">
+
+    <!-- Formulário de cadastro -->
+    <section class="card">
+      <h2>Cadastrar filme</h2>
+      <form id="form-filme">
+        <div class="campo">
+          <label for="titulo">Título</label>
+          <input type="text" id="titulo" placeholder="Ex: Central do Brasil">
+        </div>
+
+        <div class="linha">
+          <div class="campo">
+            <label for="genero">Gênero</label>
+            <select id="genero">
+              <option value="">Selecione</option>
+              <option value="Ação">Ação</option>
+              <option value="Animação">Animação</option>
+              <option value="Comédia">Comédia</option>
+              <option value="Drama">Drama</option>
+              <option value="Ficção científica">Ficção científica</option>
+              <option value="Terror">Terror</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="ano">Ano</label>
+            <input type="number" id="ano" placeholder="Ex: 1998" min="1900" max="2030">
+          </div>
+
+          <div class="campo">
+            <label for="nota">Nota (0 a 10)</label>
+            <input type="number" id="nota" placeholder="Ex: 9" min="0" max="10">
+          </div>
+        </div>
+
+        <p id="mensagem-erro" class="erro"></p>
+        <button type="submit" class="botao">Adicionar filme</button>
+      </form>
+    </section>
+
+    <!-- Busca e filtros -->
+    <section class="card">
+      <h2>Meus filmes</h2>
+
+      <div class="filtros">
+        <input type="text" id="busca" placeholder="Pesquisar pelo título...">
+
+        <select id="filtro-genero">
+          <option value="todos">Todos os gêneros</option>
+          <option value="Ação">Ação</option>
+          <option value="Animação">Animação</option>
+          <option value="Comédia">Comédia</option>
+          <option value="Drama">Drama</option>
+          <option value="Ficção científica">Ficção científica</option>
+          <option value="Terror">Terror</option>
+        </select>
+
+        <select id="filtro-status">
+          <option value="todos">Todos</option>
+          <option value="assistidos">Assistidos</option>
+          <option value="nao-assistidos">Quero assistir</option>
+        </select>
+      </div>
+
+      <p id="contador" class="contador"></p>
+
+      <ul id="lista-filmes" class="lista"></ul>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>Projeto Integrador - Front-End Frameworks 2026.2</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -4,14 +4,15 @@ Projeto Integrador da disciplina **Front-End Frameworks (2026.2)**, que avalia a
 
 ## Integrantes
 
-| Nome completo | GitHub |
-|---|---|
-| Integrante 1 | [@usuario1](https://github.com/usuario1) |
-| Integrante 2 | [@usuario2](https://github.com/usuario2) |
-| Integrante 3 | [@usuario3](https://github.com/usuario3) |
-| Integrante 4 | [@usuario4](https://github.com/usuario4) |
-| Integrante 5 | [@usuario5](https://github.com/usuario5) |
-| Integrante 6 | [@usuario6](https://github.com/usuario6) |
+| Nome completo | Matrícula | GitHub |
+|---|---|---|
+| André Manoel Medeiros de Luna | 01912149 | [@Andremluna](https://github.com/Andremluna) |
+| Gabriel Ramalho Moura | 01885151 | @usuario |
+| Integrante 3 | — | @usuario |
+| Integrante 4 | — | @usuario |
+| Integrante 5 | — | @usuario |
+| Integrante 6 | — | @usuario |
+| Integrante 7 | — | @usuario |
 
 ## Descrição
 

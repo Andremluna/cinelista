@@ -15,6 +15,31 @@
   --cor-borda: #1e2f6b;
   --cor-sucesso: #2563eb;
   --cor-perigo: #c0392b;
+  --cor-titulo: var(--cor-amarelo);
+  --cor-foco: var(--cor-amarelo);
+  --cor-etiqueta-fundo: var(--cor-principal-escura);
+  --cor-etiqueta-texto: var(--cor-amarelo-claro);
+  --cor-assistido-fundo: #0c1a4d;
+  --cor-assistido-titulo: var(--cor-amarelo);
+  --sombra-card: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Tema claro ===== */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --cor-fundo: #eef3ff;
+  --cor-card: #ffffff;
+  --cor-superficie: #f3f6ff;
+  --cor-texto: #0b1220;
+  --cor-texto-claro: #4b5b84;
+  --cor-borda: #c7d3f2;
+  --cor-titulo: #1d4ed8;
+  --cor-foco: #1d4ed8;
+  --cor-etiqueta-fundo: #fff3b0;
+  --cor-etiqueta-texto: #4a3a00;
+  --cor-assistido-fundo: #e3ecff;
+  --cor-assistido-titulo: #1d4ed8;
+  --sombra-card: 0 2px 8px rgba(15, 30, 80, 0.12);
 }
 
 * {
@@ -32,6 +57,35 @@ body {
   background-color: var(--cor-fundo);
   color: var(--cor-texto);
   line-height: 1.5;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ===== Botão de tema (claro/escuro) ===== */
+.botao-tema {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+  background-color: #0a1230;
+  border: 1px solid var(--cor-amarelo);
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.botao-tema:hover {
+  background-color: var(--cor-amarelo);
+  color: #000000;
+}
+
+.botao-tema:focus-visible {
+  outline: 2px solid var(--cor-amarelo-claro);
+  outline-offset: 3px;
 }
 
 /* ===== Cabeçalho ===== */
@@ -125,14 +179,15 @@ body {
   padding: 24px;
   margin-bottom: 24px;
   border: 1px solid var(--cor-borda);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--sombra-card);
   scroll-margin-top: 16px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .card h2 {
   font-size: 1.4rem;
   margin-bottom: 16px;
-  color: var(--cor-amarelo);
+  color: var(--cor-titulo);
 }
 
 /* ===== Formulário ===== */
@@ -166,8 +221,8 @@ input::placeholder {
 
 input:focus,
 select:focus {
-  outline: 2px solid var(--cor-amarelo);
-  border-color: var(--cor-amarelo);
+  outline: 2px solid var(--cor-foco);
+  border-color: var(--cor-foco);
 }
 
 .linha {
@@ -192,7 +247,7 @@ select:focus {
 }
 
 button:focus-visible {
-  outline: 2px solid var(--cor-amarelo);
+  outline: 2px solid var(--cor-foco);
   outline-offset: 3px;
 }
 
@@ -339,8 +394,8 @@ button:focus-visible {
 
 .etiqueta {
   display: inline-block;
-  background-color: var(--cor-principal-escura);
-  color: var(--cor-amarelo-claro);
+  background-color: var(--cor-etiqueta-fundo);
+  color: var(--cor-etiqueta-texto);
   border: 1px solid var(--cor-azul);
   padding: 2px 8px;
   border-radius: 12px;
@@ -371,12 +426,12 @@ button:focus-visible {
 
 /* Filme marcado como assistido */
 .filme.assistido {
-  background-color: #0c1a4d;
+  background-color: var(--cor-assistido-fundo);
   border-color: var(--cor-azul);
 }
 
 .filme.assistido h3 {
-  color: var(--cor-amarelo);
+  color: var(--cor-assistido-titulo);
 }
 
 /* Botões de cada filme */

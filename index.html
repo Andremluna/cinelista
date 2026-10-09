@@ -9,14 +9,21 @@
 <body>
 
   <header class="cabecalho">
-    <h1>🎬 CineLista</h1>
-    <p>Organize os filmes que você já assistiu e os que ainda quer assistir.</p>
+    <div class="cabecalho-conteudo">
+      <span class="cabecalho-selo">Sua biblioteca pessoal de cinema</span>
+      <h1>🎬 CineLista</h1>
+      <p>Organize os filmes que você já assistiu e os que ainda quer assistir.</p>
+      <div class="cabecalho-acoes">
+        <a href="#cadastro" class="botao">Cadastrar filme</a>
+        <a href="#meus-filmes" class="botao botao-secundario">Ver meus filmes</a>
+      </div>
+    </div>
   </header>
 
   <main class="container">
 
     <!-- Formulário de cadastro -->
-    <section class="card">
+    <section class="card" id="cadastro">
       <h2>Cadastrar filme</h2>
       <form id="form-filme">
         <div class="campo">
@@ -55,7 +62,7 @@
     </section>
 
     <!-- Busca e filtros -->
-    <section class="card">
+    <section class="card" id="meus-filmes">
       <h2>Meus filmes</h2>
 
       <div class="filtros">
@@ -86,7 +93,23 @@
   </main>
 
   <footer class="rodape">
-    <p>Projeto Integrador - Front-End Frameworks 2026.2</p>
+    <div class="rodape-conteudo">
+      <div class="rodape-marca">
+        <strong>CineLista</strong>
+        <p>Uma forma simples de acompanhar sua jornada pelo cinema.</p>
+      </div>
+
+      <nav class="rodape-links" aria-label="Links do rodapé">
+        <a href="#cadastro">Cadastrar filme</a>
+        <a href="#meus-filmes">Meus filmes</a>
+        <a href="#">Voltar ao topo</a>
+      </nav>
+    </div>
+
+    <div class="rodape-base">
+      <p>Projeto Integrador - Front-End Frameworks 2026.2</p>
+      <p>&copy; 2026 CineLista. Todos os direitos reservados.</p>
+    </div>
   </footer>
 
   <script src="js/script.js"></script>

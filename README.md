@@ -12,6 +12,7 @@ Projeto Integrador da disciplina **Front-End Frameworks (2026.2)**, que avalia a
 | Integrante 4 | — | @usuario |
 | Kevyn Rhyan de Barros Silva | 01921438 | @[KevynRhyan](https://github.com/kevrhy) |
 | Integrante 6 | — | @usuario |
+| Marco Vinícius Trindade Reis Lins | 01906614 | @[Mv-008](https://github.com/Mv-008) |
 
 ## Descrição
 

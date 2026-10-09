@@ -1,16 +1,19 @@
 /* ===== Variáveis de cor ===== */
 :root {
-  --cor-fundo: #050509;
-  --cor-card: #0f0c22;
-  --cor-superficie: #17123a;
-  --cor-principal: #5b21b6;
-  --cor-principal-escura: #2e1065;
+  color-scheme: dark;
+  --cor-fundo: #000000;
+  --cor-card: #0a1230;
+  --cor-superficie: #101c47;
+  --cor-principal: #1d4ed8;
+  --cor-principal-escura: #0b1f5c;
   --cor-azul: #2563eb;
   --cor-azul-claro: #60a5fa;
-  --cor-texto: #ece9fb;
-  --cor-texto-claro: #a8a4cc;
-  --cor-borda: #2b2563;
-  --cor-sucesso: #3b82f6;
+  --cor-amarelo: #facc15;
+  --cor-amarelo-claro: #fde047;
+  --cor-texto: #eef2ff;
+  --cor-texto-claro: #9fb0d9;
+  --cor-borda: #1e2f6b;
+  --cor-sucesso: #2563eb;
   --cor-perigo: #c0392b;
 }
 
@@ -35,7 +38,7 @@ body {
 .cabecalho {
   background-color: var(--cor-principal);
   background-image:
-    radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.35), transparent 40%),
+    radial-gradient(circle at 15% 20%, rgba(250, 204, 21, 0.18), transparent 40%),
     radial-gradient(circle at 85% 85%, rgba(37, 99, 235, 0.45), transparent 45%),
     linear-gradient(135deg, #000000 0%, var(--cor-principal-escura) 55%, #1e3a8a 100%);
   color: white;
@@ -62,8 +65,9 @@ body {
   font-weight: bold;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background-color: rgba(250, 204, 21, 0.12);
+  color: var(--cor-amarelo-claro);
+  border: 1px solid rgba(250, 204, 21, 0.5);
   border-radius: 999px;
 }
 
@@ -86,13 +90,13 @@ body {
   padding: 12px 28px;
   font-weight: bold;
   text-decoration: none;
-  background-color: var(--cor-azul);
-  color: white;
+  background-color: var(--cor-amarelo);
+  color: #000000;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .cabecalho-acoes .botao:hover {
-  background-color: #3b82f6;
+  background-color: var(--cor-amarelo-claro);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -105,6 +109,7 @@ body {
 
 .cabecalho-acoes .botao-secundario:hover {
   background-color: rgba(255, 255, 255, 0.12);
+  color: white;
 }
 
 /* ===== Layout ===== */
@@ -127,7 +132,7 @@ body {
 .card h2 {
   font-size: 1.4rem;
   margin-bottom: 16px;
-  color: var(--cor-azul-claro);
+  color: var(--cor-amarelo);
 }
 
 /* ===== Formulário ===== */
@@ -161,8 +166,8 @@ input::placeholder {
 
 input:focus,
 select:focus {
-  outline: 2px solid var(--cor-azul);
-  border-color: var(--cor-azul);
+  outline: 2px solid var(--cor-amarelo);
+  border-color: var(--cor-amarelo);
 }
 
 .linha {
@@ -182,11 +187,12 @@ select:focus {
 }
 
 .botao:hover {
-  background-color: var(--cor-azul);
+  background-color: var(--cor-amarelo);
+  color: #000000;
 }
 
 button:focus-visible {
-  outline: 2px solid var(--cor-azul-claro);
+  outline: 2px solid var(--cor-amarelo);
   outline-offset: 3px;
 }
 
@@ -334,8 +340,8 @@ button:focus-visible {
 .etiqueta {
   display: inline-block;
   background-color: var(--cor-principal-escura);
-  color: #c4b5fd;
-  border: 1px solid var(--cor-principal);
+  color: var(--cor-amarelo-claro);
+  border: 1px solid var(--cor-azul);
   padding: 2px 8px;
   border-radius: 12px;
   font-size: 0.8rem;
@@ -365,12 +371,12 @@ button:focus-visible {
 
 /* Filme marcado como assistido */
 .filme.assistido {
-  background-color: #0d1a3d;
-  border-color: #1e40af;
+  background-color: #0c1a4d;
+  border-color: var(--cor-azul);
 }
 
 .filme.assistido h3 {
-  color: var(--cor-azul-claro);
+  color: var(--cor-amarelo);
 }
 
 /* Botões de cada filme */
@@ -394,8 +400,8 @@ button:focus-visible {
 }
 
 .btn-favorito {
-  background-color: var(--cor-principal);
-  color: white;
+  background-color: var(--cor-amarelo);
+  color: #000000;
 }
 
 .btn-remover {
@@ -415,7 +421,7 @@ button:focus-visible {
   margin-top: 48px;
   padding: 48px 16px 24px;
   background-color: #000000;
-  border-top: 1px solid var(--cor-borda);
+  border-top: 2px solid var(--cor-amarelo);
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.95rem;
 }
@@ -455,7 +461,7 @@ button:focus-visible {
 }
 
 .rodape-links a:hover {
-  color: white;
+  color: var(--cor-amarelo);
   text-decoration: underline;
 }
 

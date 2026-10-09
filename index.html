@@ -14,7 +14,7 @@
       <h1>🎬 CineLista</h1>
       <p>Organize os filmes que você já assistiu e os que ainda quer assistir.</p>
       <div class="cabecalho-acoes">
-        <a href="#cadastro" class="botao">Cadastrar filme</a>
+        <a href="#buscar-tmdb" class="botao">Cadastrar filmes</a>
         <a href="#meus-filmes" class="botao botao-secundario">Ver meus filmes</a>
       </div>
     </div>
@@ -22,75 +22,101 @@
 
   <main class="container">
 
-    <!-- Formulário de cadastro -->
-    <section class="card" id="cadastro">
-      <h2>Cadastrar filme</h2>
-      <form id="form-filme">
-        <div class="campo">
-          <label for="titulo">Título</label>
-          <input type="text" id="titulo" placeholder="Ex: Central do Brasil">
-        </div>
+  <!-- Busca de filmes na API (TMDB) -->
+  <section class="card" id="buscar-tmdb">
+    <h2>Cadastrar filme</h2>
 
-        <div class="linha">
-          <div class="campo">
-            <label for="genero">Gênero</label>
-            <select id="genero">
-              <option value="">Selecione</option>
-              <option value="Ação">Ação</option>
-              <option value="Animação">Animação</option>
-              <option value="Comédia">Comédia</option>
-              <option value="Drama">Drama</option>
-              <option value="Ficção científica">Ficção científica</option>
-              <option value="Terror">Terror</option>
-            </select>
-          </div>
+    <p class="dica">
+      Pesquise um filme, selecione o resultado e informe sua avaliação.
+    </p>
 
-          <div class="campo">
-            <label for="ano">Ano</label>
-            <input type="number" id="ano" placeholder="Ex: 1998" min="1900" max="2030">
-          </div>
+    <form id="form-busca-api" class="busca-api">
+      <input
+        type="text"
+        id="busca-api"
+        placeholder="Digite o nome do filme..."
+        required
+      >
+      <button type="submit" class="botao">Buscar</button>
+    </form>
 
-          <div class="campo">
-            <label for="nota">Nota (0 a 10)</label>
-            <input type="number" id="nota" placeholder="Ex: 9" min="0" max="10">
-          </div>
-        </div>
+    <p id="status-api" class="status-api"></p>
+    <ul id="resultados-api" class="resultados-api"></ul>
 
-        <p id="mensagem-erro" class="erro"></p>
-        <button type="submit" class="botao">Adicionar filme</button>
-      </form>
-    </section>
+    <form id="form-filme">
+      <div id="filme-selecionado" class="filme-selecionado">
+        <p>Nenhum filme selecionado.</p>
+      </div>
 
-    <!-- Busca e filtros -->
-    <section class="card" id="meus-filmes">
-      <h2>Meus filmes</h2>
+      <div class="campo">
+        <label for="nota">Sua nota (0 a 10)</label>
+        <input
+          type="number"
+          id="nota"
+          placeholder="Ex.: 9"
+          min="0"
+          max="10"
+          step="0.5"
+          required
+        >
+      </div>
 
-      <div class="filtros">
-        <input type="text" id="busca" placeholder="Pesquisar pelo título...">
-
-        <select id="filtro-genero">
-          <option value="todos">Todos os gêneros</option>
-          <option value="Ação">Ação</option>
-          <option value="Animação">Animação</option>
-          <option value="Comédia">Comédia</option>
-          <option value="Drama">Drama</option>
-          <option value="Ficção científica">Ficção científica</option>
-          <option value="Terror">Terror</option>
-        </select>
-
-        <select id="filtro-status">
-          <option value="todos">Todos</option>
-          <option value="assistidos">Assistidos</option>
-          <option value="nao-assistidos">Quero assistir</option>
+      <div class="campo">
+        <label for="assistido">Você já assistiu?</label>
+        <select id="assistido" required>
+          <option value="">Selecione</option>
+          <option value="sim">Sim, já assisti</option>
+          <option value="nao">Não, quero assistir</option>
         </select>
       </div>
 
-      <p id="contador" class="contador"></p>
+      <p id="mensagem-erro" class="erro"></p>
 
-      <ul id="lista-filmes" class="lista"></ul>
-    </section>
+      <button type="submit" class="botao">
+        Adicionar à minha lista
+      </button>
+    </form>
+  </section>
 
-  </main>
+  <!-- Busca e filtros -->
+  <section class="card" id="meus-filmes">
+    <h2>Meus filmes</h2>
+
+    <div class="filtros">
+      <input
+        type="text"
+        id="busca"
+        placeholder="Pesquisar pelo título..."
+      >
+
+      <select id="filtro-genero">
+        <option value="todos">Todos os gêneros</option>
+        <option value="Ação">Ação</option>
+        <option value="Animação">Animação</option>
+        <option value="Aventura">Aventura</option>
+        <option value="Comédia">Comédia</option>
+        <option value="Documentário">Documentário</option>
+        <option value="Drama">Drama</option>
+        <option value="Fantasia">Fantasia</option>
+        <option value="Ficção científica">Ficção científica</option>
+        <option value="Romance">Romance</option>
+        <option value="Suspense">Suspense</option>
+        <option value="Terror">Terror</option>
+        <option value="Outros">Outros</option>
+      </select>
+
+      <select id="filtro-status">
+        <option value="todos">Todos</option>
+        <option value="assistidos">Assistidos</option>
+        <option value="nao-assistidos">Quero assistir</option>
+      </select>
+    </div>
+
+    <p id="contador" class="contador"></p>
+    <ul id="lista-filmes" class="lista"></ul>
+  </section>
+
+</main>
 
   <footer class="rodape">
     <div class="rodape-conteudo">
@@ -100,7 +126,7 @@
       </div>
 
       <nav class="rodape-links" aria-label="Links do rodapé">
-        <a href="#cadastro">Cadastrar filme</a>
+        <a href="#buscar-tmdb">Cadastrar filmes</a>
         <a href="#meus-filmes">Meus filmes</a>
         <a href="#">Voltar ao topo</a>
       </nav>
@@ -108,10 +134,12 @@
 
     <div class="rodape-base">
       <p>Projeto Integrador - Front-End Frameworks 2026.2</p>
+      <p>Dados de filmes fornecidos pelo TMDB. Este produto usa a API do TMDB.</p>
       <p>&copy; 2026 CineLista. Todos os direitos reservados.</p>
     </div>
   </footer>
 
+  <script src="js/config.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 /* ===== Variáveis de cor ===== */
 :root {
   --cor-fundo: #f4f4f7;
@@ -142,10 +143,13 @@ body {
 
 input,
 select {
+  width: 100%;
   padding: 10px;
   border: 1px solid var(--cor-borda);
   border-radius: 6px;
   font-size: 1rem;
+  background-color: white;
+  color: var(--cor-texto);
 }
 
 input:focus,
@@ -167,15 +171,106 @@ select:focus {
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .botao:hover {
   background-color: var(--cor-principal-escura);
 }
 
+button:focus-visible {
+  outline: 2px solid var(--cor-principal-escura);
+  outline-offset: 3px;
+}
+
 .erro {
   color: var(--cor-perigo);
   margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+/* ===== Busca na API (TMDB) ===== */
+.dica {
+  margin-bottom: 12px;
+  color: var(--cor-texto-claro);
+  font-size: 0.95rem;
+}
+
+.busca-api {
+  display: flex;
+  gap: 10px;
+}
+
+.busca-api input {
+  flex: 1;
+  min-width: 0;
+}
+
+.status-api {
+  margin: 12px 0;
+  min-height: 1.2em;
+  color: var(--cor-texto-claro);
+}
+
+.resultados-api {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.resultado-api {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background-color: white;
+}
+
+.resultado-api > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultado-api h3 {
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.resultado-api p {
+  color: var(--cor-texto-claro);
+  font-size: 0.9rem;
+  margin: 4px 0 8px;
+}
+
+.resultado-api .botao {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+/* Filme selecionado para cadastro */
+.filme-selecionado {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background-color: #f8f6ff;
+}
+
+.filme-selecionado img {
+  width: 56px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.filme-selecionado p {
+  color: var(--cor-texto-claro);
   font-size: 0.9rem;
 }
 
@@ -188,10 +283,12 @@ select:focus {
 
 .filtros input {
   flex: 2;
+  min-width: 0;
 }
 
 .filtros select {
   flex: 1;
+  min-width: 0;
 }
 
 .contador {
@@ -214,10 +311,12 @@ select:focus {
   border: 1px solid var(--cor-borda);
   border-radius: 8px;
   margin-bottom: 10px;
+  background-color: white;
 }
 
 .filme h3 {
   font-size: 1.1rem;
+  overflow-wrap: anywhere;
 }
 
 .filme .info {
@@ -235,7 +334,28 @@ select:focus {
   margin-top: 4px;
 }
 
-/* filme marcado como assistido */
+/* Pôsteres dos resultados e da lista */
+.poster {
+  width: 56px;
+  height: auto;
+  border-radius: 6px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.filme-dados {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.filme-dados > div {
+  min-width: 0;
+}
+
+/* Filme marcado como assistido */
 .filme.assistido {
   background-color: #eef8f2;
   border-color: #b9e2c9;
@@ -245,8 +365,10 @@ select:focus {
   color: var(--cor-sucesso);
 }
 
+/* Botões de cada filme */
 .acoes {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -341,20 +463,46 @@ select:focus {
 
 /* ===== Responsivo (celular) ===== */
 @media (max-width: 600px) {
+  .container {
+    margin-top: 16px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
   .linha,
-  .filtros {
+  .filtros,
+  .busca-api {
     flex-direction: column;
-    gap: 0;
+    gap: 10px;
   }
 
   .filtros input,
   .filtros select {
-    margin-bottom: 10px;
+    margin-bottom: 0;
+  }
+
+  .resultado-api {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .resultado-api > div {
+    flex-basis: calc(100% - 72px);
+  }
+
+  .resultado-api .botao {
+    width: 100%;
   }
 
   .filme {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .filme-dados {
+    width: 100%;
   }
 
   .acoes {
@@ -369,17 +517,21 @@ select:focus {
     padding: 64px 16px 56px;
   }
 
+  .cabecalho-acoes {
+    flex-direction: column;
+  }
+
   .cabecalho-acoes .botao {
     width: 100%;
     text-align: center;
   }
 
+  .filme-selecionado {
+    align-items: flex-start;
+  }
+
   .rodape-base {
     flex-direction: column;
     text-align: center;
-  }
-}
-  .acoes button {
-    flex: 1;
   }
 }

@@ -7,7 +7,7 @@ Projeto Integrador da disciplina **Front-End Frameworks (2026.2)**, que avalia a
 | Nome completo | Matrícula | GitHub |
 |---|---|---|
 | André Manoel Medeiros de Luna | 01912149 | [@Andremluna](https://github.com/Andremluna) |
-| Gabriel Ramalho Moura | 01885151 | @usuario |
+| Gabriel Ramalho Moura | 01885151 | [@gabrielrmti](https://github.com/gabrielrmti) |
 | Integrante 3 | — | @usuario |
 | Integrante 4 | — | @usuario |
 | Integrante 5 | — | @usuario |

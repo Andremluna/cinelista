@@ -8,8 +8,8 @@ Projeto Integrador da disciplina **Front-End Frameworks (2026.2)**, que avalia a
 |---|---|---|
 | André Manoel Medeiros de Luna | 01912149 | [@Andremluna](https://github.com/Andremluna) |
 | Gabriel Ramalho Moura | 01885151 | [@gabrielrmti](https://github.com/gabrielrmti) |
-| Integrante 3 | — | @usuario |
-| Integrante 4 | — | @usuario |
+| Júlio César da Silva Oliveira Machado | 01905654 | [@julio-cesar41](https://github.com/julio-cesar41) |
+| Matheus Felipe Oliveira Cirne de Azevedo | 01905796 | [@Matheus-Cirne](https://github.com/Matheus-Cirne) |
 | Kevyn Rhyan de Barros Silva | 01921438 | @[KevynRhyan](https://github.com/kevrhy) |
 | Integrante 6 | — | @usuario |
 | Marco Vinícius Trindade Reis Lins | 01906614 | @[Mv-008](https://github.com/Mv-008) |

@@ -12,7 +12,7 @@ Projeto Integrador da disciplina **Front-End Frameworks (2026.2)**, que avalia a
 | Matheus Felipe Oliveira Cirne de Azevedo | 01905796 | [@Matheus-Cirne](https://github.com/Matheus-Cirne) |
 | Kevyn Rhyan de Barros Silva | 01921438 | [@kevrhy](https://github.com/kevrhy) |
 | Marco Vinícius Trindade Reis Lins | 01906614 | [@Mv-008](https://github.com/Mv-008) |
-| Integrante 7 | — | — |
+| Kauan Gabriel | — | [@gabkauan](https://github.com/gabkauan) |
 
 ## Descrição
 
@@ -191,7 +191,7 @@ React não seria necessariamente melhor para a versão atual: adicionaria config
 | Júlio César da Silva Oliveira Machado | Revisão do esquema de cores, tema claro/escuro e autocomplete na pesquisa. |
 | Matheus Felipe Oliveira Cirne de Azevedo | A preencher. |
 | Marco Vinícius Trindade Reis Lins | A preencher. |
-| Integrante 7 | A preencher. |
+| Kauan Gabriel | A preencher. |
 | Todos | Testes, revisão do código e documentação. |
 
 ## Histórico do desenvolvimento

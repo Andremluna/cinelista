@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--cor-fundo);
@@ -27,14 +31,77 @@ body {
 /* ===== Cabeçalho ===== */
 .cabecalho {
   background-color: var(--cor-principal);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.18), transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.12), transparent 40%),
+    linear-gradient(135deg, var(--cor-principal-escura) 0%, var(--cor-principal) 100%);
   color: white;
   text-align: center;
-  padding: 32px 16px;
+  padding: 88px 16px 72px;
 }
 
 .cabecalho h1 {
-  font-size: 2.2rem;
-  margin-bottom: 8px;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.cabecalho-conteudo {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.cabecalho-selo {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+}
+
+.cabecalho p {
+  max-width: 520px;
+  margin: 0 auto 32px;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cabecalho-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.cabecalho-acoes .botao {
+  display: inline-block;
+  padding: 12px 28px;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: white;
+  color: var(--cor-principal-escura);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.cabecalho-acoes .botao:hover {
+  background-color: #ece7fb;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cabecalho-acoes .botao-secundario {
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.cabecalho-acoes .botao-secundario:hover {
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 /* ===== Layout ===== */
@@ -50,6 +117,7 @@ body {
   padding: 24px;
   margin-bottom: 24px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  scroll-margin-top: 16px;
 }
 
 .card h2 {
@@ -213,10 +281,62 @@ select:focus {
 
 /* ===== Rodapé ===== */
 .rodape {
-  text-align: center;
-  padding: 20px;
-  color: var(--cor-texto-claro);
+  text-align: left;
+  margin-top: 48px;
+  padding: 48px 16px 24px;
+  background-color: var(--cor-principal-escura);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.rodape-conteudo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.rodape-marca strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.rodape-marca p {
+  max-width: 320px;
+}
+
+.rodape-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rodape-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.rodape-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.rodape-base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  max-width: 900px;
+  margin: 24px auto 0;
   font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 /* ===== Responsivo (celular) ===== */
@@ -241,6 +361,24 @@ select:focus {
     width: 100%;
   }
 
+  .acoes button {
+    flex: 1;
+  }
+
+  .cabecalho {
+    padding: 64px 16px 56px;
+  }
+
+  .cabecalho-acoes .botao {
+    width: 100%;
+    text-align: center;
+  }
+
+  .rodape-base {
+    flex-direction: column;
+    text-align: center;
+  }
+}
   .acoes button {
     flex: 1;
   }

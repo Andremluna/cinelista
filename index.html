@@ -5,8 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CineLista - Biblioteca de Filmes</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Aplica o tema salvo antes da página aparecer (evita piscar)
+    try {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("cinelista-tema") === "light" ? "light" : "dark"
+      );
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  </script>
 </head>
 <body>
+
+  <button type="button" id="botao-tema" class="botao-tema" aria-label="Alternar entre tema claro e escuro">
+    ☀️ Tema claro
+  </button>
 
   <header class="cabecalho">
     <div class="cabecalho-conteudo">

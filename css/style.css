@@ -319,6 +319,74 @@ button:focus-visible {
   font-size: 0.9rem;
 }
 
+/* Autocompletar da busca */
+.busca-api-campo {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.sugestoes {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 5;
+  list-style: none;
+  max-height: 340px;
+  overflow-y: auto;
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  box-shadow: var(--sombra-card);
+}
+
+.sugestao {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+
+.sugestao[aria-selected="true"] {
+  background-color: var(--cor-superficie);
+  border-left-color: var(--cor-foco);
+}
+
+.sugestao-poster {
+  width: 32px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.sugestao-sem-poster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  font-size: 0.9rem;
+}
+
+.sugestao-texto {
+  min-width: 0;
+}
+
+.sugestao-texto strong {
+  display: block;
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+.sugestao-texto small {
+  color: var(--cor-texto-claro);
+  font-size: 0.8rem;
+}
+
 /* Filme selecionado para cadastro */
 .filme-selecionado {
   display: flex;

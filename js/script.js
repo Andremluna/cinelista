@@ -1,4 +1,3 @@
-
 // ===============================
 // CineLista - Biblioteca de Filmes
 // ===============================
@@ -467,3 +466,45 @@ inputBuscaApi.addEventListener("input", () => {
 
 // Mostra a lista quando a página abre
 mostrarFilmes();
+
+// ===============================
+// Tema claro / escuro
+// ===============================
+const botaoTema = document.getElementById("botao-tema");
+
+// Atualiza o texto do botão conforme o tema ativo
+function atualizarBotaoTema(tema) {
+    botaoTema.textContent =
+        tema === "dark" ? "Tema claro" : "Tema escuro";
+}
+
+// Aplica o tema na página e guarda a escolha no navegador
+function aplicarTema(tema) {
+    document.documentElement.setAttribute("data-theme", tema);
+    atualizarBotaoTema(tema);
+
+    try {
+        localStorage.setItem("cinelista-tema", tema);
+    } catch (erro) {
+        console.error(erro);
+    }
+}
+
+// Troca entre claro e escuro
+function alternarTema() {
+    const atual =
+        document.documentElement.getAttribute("data-theme") === "light"
+            ? "light"
+            : "dark";
+
+    aplicarTema(atual === "dark" ? "light" : "dark");
+}
+
+if (botaoTema) {
+    atualizarBotaoTema(
+        document.documentElement.getAttribute("data-theme") === "light"
+            ? "light"
+            : "dark"
+    );
+    botaoTema.addEventListener("click", alternarTema);
+}

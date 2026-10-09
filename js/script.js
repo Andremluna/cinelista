@@ -468,6 +468,211 @@ inputBuscaApi.addEventListener("input", () => {
 mostrarFilmes();
 
 // ===============================
+// Autocompletar a busca de filmes
+// ===============================
+const listaSugestoes = document.getElementById("sugestoes-api");
+
+let sugestoes = [];            // filmes sugeridos no momento
+let sugestaoAtiva = -1;        // posição destacada (mouse ou teclado)
+let temporizadorSugestoes = null;
+let numeroBuscaSugestoes = 0;  // serve para ignorar respostas antigas
+
+// Esconde a lista de sugestões
+function fecharSugestoes() {
+    numeroBuscaSugestoes++;
+    clearTimeout(temporizadorSugestoes);
+    sugestoes = [];
+    sugestaoAtiva = -1;
+    listaSugestoes.innerHTML = "";
+    listaSugestoes.hidden = true;
+    inputBuscaApi.setAttribute("aria-expanded", "false");
+    inputBuscaApi.removeAttribute("aria-activedescendant");
+}
+
+// Destaca uma sugestão (usado pelo mouse e pelas setas)
+function destacarSugestao(posicao) {
+    const itens = listaSugestoes.children;
+    sugestaoAtiva = posicao;
+
+    for (let i = 0; i < itens.length; i++) {
+        const ativo = i === posicao;
+        itens[i].setAttribute("aria-selected", ativo ? "true" : "false");
+
+        if (ativo) {
+            inputBuscaApi.setAttribute("aria-activedescendant", itens[i].id);
+            itens[i].scrollIntoView({ block: "nearest" });
+        }
+    }
+}
+
+// Preenche o campo e já seleciona o filme escolhido
+function escolherSugestao(filmeApi) {
+    inputBuscaApi.value = filmeApi.title;
+    fecharSugestoes();
+    selecionarFilme(filmeApi);
+}
+
+// Desenha as sugestões abaixo do campo
+function mostrarSugestoes(lista) {
+    listaSugestoes.innerHTML = "";
+    sugestaoAtiva = -1;
+    inputBuscaApi.removeAttribute("aria-activedescendant");
+
+    if (lista.length === 0) {
+        fecharSugestoes();
+        return;
+    }
+
+    sugestoes = lista;
+
+    lista.forEach(function (filmeApi, posicao) {
+        const li = document.createElement("li");
+        li.id = "sugestao-" + posicao;
+        li.classList.add("sugestao");
+        li.setAttribute("role", "option");
+        li.setAttribute("aria-selected", "false");
+
+        if (filmeApi.poster_path) {
+            const img = document.createElement("img");
+            img.src = TMDB_IMG + filmeApi.poster_path;
+            img.alt = "";
+            img.classList.add("sugestao-poster");
+            li.appendChild(img);
+        } else {
+            const semPoster = document.createElement("div");
+            semPoster.classList.add("sugestao-poster", "sugestao-sem-poster");
+            semPoster.textContent = "🎬";
+            li.appendChild(semPoster);
+        }
+
+        const texto = document.createElement("div");
+        texto.classList.add("sugestao-texto");
+
+        const titulo = document.createElement("strong");
+        titulo.textContent = filmeApi.title;
+
+        const ano = document.createElement("small");
+        ano.textContent = filmeApi.release_date
+            ? filmeApi.release_date.slice(0, 4)
+            : "Ano não informado";
+
+        texto.appendChild(titulo);
+        texto.appendChild(ano);
+        li.appendChild(texto);
+
+        // Evita que o campo perca o foco antes do clique
+        li.addEventListener("mousedown", function (evento) {
+            evento.preventDefault();
+        });
+
+        li.addEventListener("mousemove", function () {
+            if (sugestaoAtiva !== posicao) {
+                destacarSugestao(posicao);
+            }
+        });
+
+        li.addEventListener("click", function () {
+            escolherSugestao(filmeApi);
+        });
+
+        listaSugestoes.appendChild(li);
+    });
+
+    listaSugestoes.hidden = false;
+    inputBuscaApi.setAttribute("aria-expanded", "true");
+}
+
+// Busca na API os filmes parecidos com o texto digitado
+async function buscarSugestoes(termo) {
+    if (
+        typeof TMDB_API_KEY === "undefined" ||
+        !TMDB_API_KEY
+    ) {
+        return;
+    }
+
+    const numero = ++numeroBuscaSugestoes;
+
+    try {
+        const url =
+            `${TMDB_URL}/search/movie?api_key=${TMDB_API_KEY}` +
+            `&language=pt-BR&include_adult=false&query=${encodeURIComponent(termo)}`;
+
+        const resposta = await fetch(url);
+
+        if (!resposta.ok) {
+            throw new Error("Erro HTTP: " + resposta.status);
+        }
+
+        const dados = await resposta.json();
+
+        // Se o usuário digitou mais alguma coisa, esta resposta já está velha
+        if (numero !== numeroBuscaSugestoes) {
+            return;
+        }
+
+        mostrarSugestoes(dados.results.slice(0, 6));
+
+    } catch (erro) {
+        console.error(erro);
+
+        if (numero === numeroBuscaSugestoes) {
+            fecharSugestoes();
+        }
+    }
+}
+
+if (listaSugestoes) {
+    // Espera o usuário parar de digitar um instante antes de buscar
+    inputBuscaApi.addEventListener("input", function () {
+        clearTimeout(temporizadorSugestoes);
+
+        const termo = inputBuscaApi.value.trim();
+
+        if (termo.length < 2) {
+            fecharSugestoes();
+            return;
+        }
+
+        temporizadorSugestoes = setTimeout(function () {
+            buscarSugestoes(termo);
+        }, 300);
+    });
+
+    // Setas, Enter e Esc
+    inputBuscaApi.addEventListener("keydown", function (evento) {
+        if (listaSugestoes.hidden) {
+            return;
+        }
+
+        const total = sugestoes.length;
+
+        if (evento.key === "ArrowDown") {
+            evento.preventDefault();
+            destacarSugestao((sugestaoAtiva + 1) % total);
+        } else if (evento.key === "ArrowUp") {
+            evento.preventDefault();
+            destacarSugestao(sugestaoAtiva <= 0 ? total - 1 : sugestaoAtiva - 1);
+        } else if (evento.key === "Enter" && sugestaoAtiva >= 0) {
+            evento.preventDefault();
+            escolherSugestao(sugestoes[sugestaoAtiva]);
+        } else if (evento.key === "Escape") {
+            fecharSugestoes();
+        }
+    });
+
+    // Ao clicar em "Buscar", a busca normal assume
+    formBuscaApi.addEventListener("submit", fecharSugestoes);
+
+    // Clicar fora fecha a lista
+    document.addEventListener("click", function (evento) {
+        if (!evento.target.closest(".busca-api-campo")) {
+            fecharSugestoes();
+        }
+    });
+}
+
+// ===============================
 // Tema claro / escuro
 // ===============================
 const botaoTema = document.getElementById("botao-tema");

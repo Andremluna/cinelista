@@ -1,14 +1,16 @@
-
 /* ===== Variáveis de cor ===== */
 :root {
-  --cor-fundo: #f4f4f7;
-  --cor-card: #ffffff;
-  --cor-principal: #5b3cc4;
-  --cor-principal-escura: #432a99;
-  --cor-texto: #222222;
-  --cor-texto-claro: #666666;
-  --cor-borda: #dddddd;
-  --cor-sucesso: #1f8a4c;
+  --cor-fundo: #050509;
+  --cor-card: #0f0c22;
+  --cor-superficie: #17123a;
+  --cor-principal: #5b21b6;
+  --cor-principal-escura: #2e1065;
+  --cor-azul: #2563eb;
+  --cor-azul-claro: #60a5fa;
+  --cor-texto: #ece9fb;
+  --cor-texto-claro: #a8a4cc;
+  --cor-borda: #2b2563;
+  --cor-sucesso: #3b82f6;
   --cor-perigo: #c0392b;
 }
 
@@ -33,9 +35,9 @@ body {
 .cabecalho {
   background-color: var(--cor-principal);
   background-image:
-    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.18), transparent 40%),
-    radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.12), transparent 40%),
-    linear-gradient(135deg, var(--cor-principal-escura) 0%, var(--cor-principal) 100%);
+    radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.35), transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(37, 99, 235, 0.45), transparent 45%),
+    linear-gradient(135deg, #000000 0%, var(--cor-principal-escura) 55%, #1e3a8a 100%);
   color: white;
   text-align: center;
   padding: 88px 16px 72px;
@@ -84,13 +86,13 @@ body {
   padding: 12px 28px;
   font-weight: bold;
   text-decoration: none;
-  background-color: white;
-  color: var(--cor-principal-escura);
+  background-color: var(--cor-azul);
+  color: white;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .cabecalho-acoes .botao:hover {
-  background-color: #ece7fb;
+  background-color: #3b82f6;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -117,14 +119,15 @@ body {
   border-radius: 10px;
   padding: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--cor-borda);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
   scroll-margin-top: 16px;
 }
 
 .card h2 {
   font-size: 1.4rem;
   margin-bottom: 16px;
-  color: var(--cor-principal-escura);
+  color: var(--cor-azul-claro);
 }
 
 /* ===== Formulário ===== */
@@ -148,14 +151,18 @@ select {
   border: 1px solid var(--cor-borda);
   border-radius: 6px;
   font-size: 1rem;
-  background-color: white;
+  background-color: var(--cor-superficie);
   color: var(--cor-texto);
+}
+
+input::placeholder {
+  color: var(--cor-texto-claro);
 }
 
 input:focus,
 select:focus {
-  outline: 2px solid var(--cor-principal);
-  border-color: var(--cor-principal);
+  outline: 2px solid var(--cor-azul);
+  border-color: var(--cor-azul);
 }
 
 .linha {
@@ -175,11 +182,11 @@ select:focus {
 }
 
 .botao:hover {
-  background-color: var(--cor-principal-escura);
+  background-color: var(--cor-azul);
 }
 
 button:focus-visible {
-  outline: 2px solid var(--cor-principal-escura);
+  outline: 2px solid var(--cor-azul-claro);
   outline-offset: 3px;
 }
 
@@ -227,7 +234,7 @@ button:focus-visible {
   padding: 12px;
   border: 1px solid var(--cor-borda);
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--cor-superficie);
 }
 
 .resultado-api > div {
@@ -260,7 +267,7 @@ button:focus-visible {
   margin-bottom: 16px;
   border: 1px solid var(--cor-borda);
   border-radius: 8px;
-  background-color: #f8f6ff;
+  background-color: var(--cor-superficie);
 }
 
 .filme-selecionado img {
@@ -311,7 +318,7 @@ button:focus-visible {
   border: 1px solid var(--cor-borda);
   border-radius: 8px;
   margin-bottom: 10px;
-  background-color: white;
+  background-color: var(--cor-superficie);
 }
 
 .filme h3 {
@@ -326,8 +333,9 @@ button:focus-visible {
 
 .etiqueta {
   display: inline-block;
-  background-color: #ece7fb;
-  color: var(--cor-principal-escura);
+  background-color: var(--cor-principal-escura);
+  color: #c4b5fd;
+  border: 1px solid var(--cor-principal);
   padding: 2px 8px;
   border-radius: 12px;
   font-size: 0.8rem;
@@ -357,12 +365,12 @@ button:focus-visible {
 
 /* Filme marcado como assistido */
 .filme.assistido {
-  background-color: #eef8f2;
-  border-color: #b9e2c9;
+  background-color: #0d1a3d;
+  border-color: #1e40af;
 }
 
 .filme.assistido h3 {
-  color: var(--cor-sucesso);
+  color: var(--cor-azul-claro);
 }
 
 /* Botões de cada filme */
@@ -386,8 +394,8 @@ button:focus-visible {
 }
 
 .btn-favorito {
-  background-color: #f1c40f;
-  color: #333;
+  background-color: var(--cor-principal);
+  color: white;
 }
 
 .btn-remover {
@@ -406,7 +414,8 @@ button:focus-visible {
   text-align: left;
   margin-top: 48px;
   padding: 48px 16px 24px;
-  background-color: var(--cor-principal-escura);
+  background-color: #000000;
+  border-top: 1px solid var(--cor-borda);
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.95rem;
 }

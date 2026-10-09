@@ -20,7 +20,7 @@
 <body>
 
   <button type="button" id="botao-tema" class="botao-tema" aria-label="Alternar entre tema claro e escuro">
-    ☀️ Tema claro
+     Tema claro
   </button>
 
   <header class="cabecalho">
@@ -46,12 +46,20 @@
     </p>
 
     <form id="form-busca-api" class="busca-api">
-      <input
-        type="text"
-        id="busca-api"
-        placeholder="Digite o nome do filme..."
-        required
-      >
+      <div class="busca-api-campo">
+        <input
+          type="text"
+          id="busca-api"
+          placeholder="Digite o nome do filme..."
+          autocomplete="off"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-controls="sugestoes-api"
+          required
+        >
+        <ul id="sugestoes-api" class="sugestoes" role="listbox" hidden></ul>
+      </div>
       <button type="submit" class="botao">Buscar</button>
     </form>
 
